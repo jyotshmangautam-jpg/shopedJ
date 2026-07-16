@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — VERTEX</title>
+<meta name="description" content="Sign in to your Vertex account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <div class="toast-stack" id="toast-stack"></div>
+
+  <div class="auth-shell">
+
+    <!-- Visual side -->
+    <div class="auth-visual">
+      <div class="auth-visual-canvas"><canvas id="login-canvas" style="width:100%;height:100%;"></canvas></div>
+      <div class="auth-visual-top">
+        <a href="index (1).html" class="logo"><i></i>VER<span>TEX</span></a>
+      </div>
+      <div class="auth-visual-bottom">
+        <span class="auth-tagline">Vertex Account</span>
+        <h2>Step into the next dimension of your gear.</h2>
+        <p>Track orders, save your wishlist across devices, and get first access to every new drop — before it hits the shop.</p>
+      </div>
+    </div>
+
+    <!-- Form side -->
+    <div class="auth-form-side">
+      <a href="index (1).html" class="auth-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        Back to store
+      </a>
+      <button class="icon-btn auth-theme-toggle" data-theme-toggle aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19v2.4M21.5 12h-2.4M4.9 12H2.5M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7M18.4 18.4l-1.7-1.7M7.3 7.3 5.6 5.6"/></svg>
+      </button>
+
+      <div class="auth-card">
+
+        <div id="auth-forms">
+          <div class="auth-tabs">
+            <button class="auth-tab active" data-auth-tab="login">Log In</button>
+            <button class="auth-tab" data-auth-tab="signup">Sign Up</button>
+          </div>
+
+          <!-- LOGIN PANEL -->
+          <div class="auth-panel" data-auth-panel="login">
+            <h1>Welcome back</h1>
+            <p class="sub">Log in to pick up right where you left off.</p>
+
+            <form novalidate id="login-form">
+              <div class="form-group" data-group="login-email">
+                <label for="login-email">Email address</label>
+                <input class="field" type="email" id="login-email" placeholder="you@email.com" required>
+                <span class="field-error">Enter a valid email address.</span>
+              </div>
+
+              <div class="form-group" data-group="login-password">
+                <label for="login-password">Password</label>
+                <div class="field-wrap">
+                  <input class="field" type="password" id="login-password" placeholder="••••••••" required minlength="6">
+                  <button type="button" class="field-icon-btn" data-toggle-pass="login-password" aria-label="Show password">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.2"/></svg>
+                  </button>
+                </div>
+                <span class="field-error">Password must be at least 6 characters.</span>
+              </div>
+
+              <div class="form-row-between">
+                <label class="checkbox-row"><input type="checkbox" id="remember-me"> Remember me</label>
+                <a href="#" class="link-accent" id="forgot-link">Forgot password?</a>
+              </div>
+
+              <button class="btn btn-primary btn-block" type="submit">
+                <span class="spinner"></span><span class="btn-label">Log In</span>
+              </button>
+            </form>
+
+            <div class="divider-row">or continue with</div>
+            <div class="social-row-auth">
+              <button class="social-btn" data-social="Google"><span class="avatar" style="width:20px;height:20px;font-size:11px;background:var(--gradient-primary);">G</span>Google</button>
+              <button class="social-btn" data-social="Apple"><span class="avatar" style="width:20px;height:20px;font-size:11px;background:var(--gradient-warm);">A</span>Apple</button>
+              <button class="social-btn" data-social="GitHub"><span class="avatar" style="width:20px;height:20px;font-size:11px;background:var(--text-faint);">H</span>GitHub</button>
+            </div>
+
+            <p class="auth-switch">New to Vertex? <a class="link-accent" data-switch-to="signup">Create an account</a></p>
+          </div>
+
+          <!-- SIGNUP PANEL -->
+          <div class="auth-panel" data-auth-panel="signup" style="display:none;">
+            <h1>Create your account</h1>
+            <p class="sub">Join Vertex for order tracking, early drops, and saved wishlists.</p>
+
+            <form novalidate id="signup-form">
+              <div class="form-group" data-group="signup-name">
+                <label for="signup-name">Full name</label>
+                <input class="field" type="text" id="signup-name" placeholder="Jordan Lee" required>
+                <span class="field-error">Enter your name.</span>
+              </div>
+
+              <div class="form-group" data-group="signup-email">
+                <label for="signup-email">Email address</label>
+                <input class="field" type="email" id="signup-email" placeholder="you@email.com" required>
+                <span class="field-error">Enter a valid email address.</span>
+              </div>
+
+              <div class="form-group" data-group="signup-password">
+                <label for="signup-password">Password</label>
+                <div class="field-wrap">
+                  <input class="field" type="password" id="signup-password" placeholder="At least 6 characters" required minlength="6">
+                  <button type="button" class="field-icon-btn" data-toggle-pass="signup-password" aria-label="Show password">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.2"/></svg>
+                  </button>
+                </div>
+                <span class="field-error">Password must be at least 6 characters.</span>
+              </div>
+
+              <div class="form-row-between" style="margin-bottom:6px;">
+                <label class="checkbox-row"><input type="checkbox" id="agree-terms"> I agree to the Terms and Privacy Policy</label>
+              </div>
+
+              <button class="btn btn-primary btn-block" type="submit" style="margin-top:16px;">
+                <span class="spinner"></span><span class="btn-label">Create Account</span>
+              </button>
+            </form>
+
+            <div class="divider-row">or continue with</div>
+            <div class="social-row-auth">
+              <button class="social-btn" data-social="Google"><span class="avatar" style="width:20px;height:20px;font-size:11px;background:var(--gradient-primary);">G</span>Google</button>
+              <button class="social-btn" data-social="Apple"><span class="avatar" style="width:20px;height:20px;font-size:11px;background:var(--gradient-warm);">A</span>Apple</button>
+              <button class="social-btn" data-social="GitHub"><span class="avatar" style="width:20px;height:20px;font-size:11px;background:var(--text-faint);">H</span>GitHub</button>
+            </div>
+
+            <p class="auth-switch">Already have an account? <a class="link-accent" data-switch-to="login">Log in</a></p>
+          </div>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="auth-success" id="auth-success">
+          <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+          <h1 id="auth-success-title">You're in</h1>
+          <p class="sub" id="auth-success-sub">This is a demo — no real account was created.</p>
+          <a href="index (1).html" class="btn btn-primary btn-block">Continue to Vertex</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="scene.js"></script>
+  <script src="login-main.js"></script>
+</body>
+</html>
